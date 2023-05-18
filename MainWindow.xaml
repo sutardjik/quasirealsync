@@ -1,0 +1,629 @@
+﻿<Window x:Class="mysqlpostgres.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mysqlpostgres"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="800" 
+        Width="1500"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Window.Resources>
+        <Style x:Key="Main_MenuItem"
+               TargetType="MenuItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border x:Name="border"
+                                Background="#363435"
+                                BorderThickness="0">
+                            <Grid>
+                                <ContentPresenter ContentSource="Header"
+                                                  TextBlock.Foreground="#D3D7DC"
+                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontSize="15"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15,0,0,0" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Test_MenuItem_With_Dropdown"
+               TargetType="MenuItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border x:Name="border"
+                                Background="#363435"
+                                BorderThickness="0"
+                                Height="30"
+                                Width="195">
+                            <Grid>
+                                <ContentPresenter ContentSource="Header"
+                                                  TextBlock.Foreground="#D3D7DC"
+                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontSize="15"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15,0,0,0" />
+                                <Image Source="Assets/dropdown.png"
+                                       Stretch="None"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,10,0" />
+                                <Popup x:Name="PART_Popup"
+                                       AllowsTransparency="True"
+                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Placement="Bottom"
+                                       PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
+                                    <Border x:Name="SubMenuBorder"
+                                            Background="#484546"
+                                            BorderBrush="#484546">
+                                        <ScrollViewer x:Name="SubMenuScrollViewer"
+                                                      Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                <Canvas HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top" />
+                                                <ItemsPresenter x:Name="ItemsPresenter" />
+                                            </Grid>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSuspendingPopupAnimation"
+                                     Value="True">
+                                <Setter Property="PopupAnimation"
+                                        TargetName="PART_Popup"
+                                        Value="None" />
+                            </Trigger>
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Demo_MenuItem_With_Dropdown"
+               TargetType="MenuItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border x:Name="border"
+                                Background="#363435"
+                                BorderThickness="0"
+                                Height="30"
+                                Width="225">
+                            <Grid>
+                                <ContentPresenter ContentSource="Header"
+                                                  TextBlock.Foreground="#D3D7DC"
+                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontSize="15"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15,0,0,0" />
+                                <Image Source="Assets/dropdown.png"
+                                       Stretch="None"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,10,0" />
+                                <Popup x:Name="PART_Popup"
+                                       AllowsTransparency="True"
+                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Placement="Bottom"
+                                       PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
+                                    <Border x:Name="SubMenuBorder"
+                                            Background="#484546"
+                                            BorderBrush="#484546">
+                                        <ScrollViewer x:Name="SubMenuScrollViewer"
+                                                      Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                <Canvas HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top" />
+                                                <ItemsPresenter x:Name="ItemsPresenter" />
+                                            </Grid>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSuspendingPopupAnimation"
+                                     Value="True">
+                                <Setter Property="PopupAnimation"
+                                        TargetName="PART_Popup"
+                                        Value="None" />
+                            </Trigger>
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Sample_MenuItem_With_Dropdown"
+               TargetType="MenuItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border x:Name="border"
+                                Background="#363435"
+                                BorderThickness="0"
+                                Height="30"
+                                Width="240">
+                            <Grid>
+                                <ContentPresenter ContentSource="Header"
+                                                  TextBlock.Foreground="#D3D7DC"
+                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontSize="15"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15,0,0,0" />
+                                <Image Source="Assets/dropdown.png"
+                                       Stretch="None"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,10,0" />
+                                <Popup x:Name="PART_Popup"
+                                       AllowsTransparency="True"
+                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Placement="Bottom"
+                                       PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
+                                    <Border x:Name="SubMenuBorder"
+                                            Background="#484546"
+                                            BorderBrush="#484546">
+                                        <ScrollViewer x:Name="SubMenuScrollViewer"
+                                                      Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                <Canvas HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top" />
+                                                <ItemsPresenter x:Name="ItemsPresenter" />
+                                            </Grid>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSuspendingPopupAnimation"
+                                     Value="True">
+                                <Setter Property="PopupAnimation"
+                                        TargetName="PART_Popup"
+                                        Value="None" />
+                            </Trigger>
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DB_Ops_MenuItem_With_Dropdown"
+               TargetType="MenuItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border x:Name="border"
+                                Background="#363435"
+                                BorderThickness="0"
+                                Height="30"
+                                Width="100">
+                            <Grid>
+                                <ContentPresenter ContentSource="Header"
+                                                  TextBlock.Foreground="#D3D7DC"
+                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontSize="15"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15,0,0,0" />
+                                <Image Source="Assets/dropdown.png"
+                                       Stretch="None"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,10,0" />
+                                <Popup x:Name="PART_Popup"
+                                       AllowsTransparency="True"
+                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Placement="Bottom"
+                                       PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
+                                    <Border x:Name="SubMenuBorder"
+                                            Background="#484546"
+                                            BorderBrush="#484546">
+                                        <ScrollViewer x:Name="SubMenuScrollViewer"
+                                                      Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                <Canvas HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top" />
+                                                <ItemsPresenter x:Name="ItemsPresenter" />
+                                            </Grid>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSuspendingPopupAnimation"
+                                     Value="True">
+                                <Setter Property="PopupAnimation"
+                                        TargetName="PART_Popup"
+                                        Value="None" />
+                            </Trigger>
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Binlog_Ops_MenuItem_With_Dropdown"
+               TargetType="MenuItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border x:Name="border"
+                                Background="#363435"
+                                BorderThickness="0"
+                                Height="30"
+                                Width="135">
+                            <Grid>
+                                <ContentPresenter ContentSource="Header"
+                                                  TextBlock.Foreground="#D3D7DC"
+                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontSize="15"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15,0,0,0" />
+                                <Image Source="Assets/dropdown.png"
+                                       Stretch="None"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,10,0" />
+                                <Popup x:Name="PART_Popup"
+                                       AllowsTransparency="True"
+                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Placement="Bottom"
+                                       PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
+                                    <Border x:Name="SubMenuBorder"
+                                            Background="#484546"
+                                            BorderBrush="#484546">
+                                        <ScrollViewer x:Name="SubMenuScrollViewer"
+                                                      Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                <Canvas HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top" />
+                                                <ItemsPresenter x:Name="ItemsPresenter" />
+                                            </Grid>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSuspendingPopupAnimation"
+                                     Value="True">
+                                <Setter Property="PopupAnimation"
+                                        TargetName="PART_Popup"
+                                        Value="None" />
+                            </Trigger>
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="#524E4F" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Sub_MenuItem"
+               TargetType="MenuItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border x:Name="border"
+                                Background="#363435"
+                                BorderThickness="0">
+                            <Grid>
+                                <ContentPresenter ContentSource="Icon"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Height="18"
+                                                  Width="18"
+                                                  Margin="8,0,0,0" />
+                                <ContentPresenter ContentSource="Header"
+                                                  TextBlock.Foreground="#D3D7DC"
+                                                  TextBlock.FontFamily="/Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontSize="15"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="35,0,0,0" />
+                                <Grid x:Name="Highlighter"
+                                      Height="35"
+                                      Width="2"
+                                      Background="#FFFFFF"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Visibility="Collapsed" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="#3E3C3D" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="#3E3C3D" />
+                                <Setter Property="Visibility"
+                                        TargetName="Highlighter"
+                                        Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Border Height="800"
+                Width="1200"
+                CornerRadius="25"
+                Background="#524E4F">
+            <Border.Effect>
+                <DropShadowEffect Color="#000000"
+                                  Opacity="0.5"
+                                  Direction="90"
+                                  ShadowDepth="1"
+                                  BlurRadius="35"/>
+            </Border.Effect>
+            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="901,170,75,376"/>
+            
+        </Border>
+        <Border Height="40"
+                Width="1020"
+                Background="#363435"
+                BorderThickness="3"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="0,75,0,0"
+                CornerRadius="5"/>
+        <Menu Height="30"
+              Width="1010"
+              Background="#363435"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Center"
+              Margin="0,80,0,0">
+            <MenuItem Header="QUERY DBs"
+                  Height="30"
+                  Width="115"
+                  Style="{StaticResource Main_MenuItem}">
+            </MenuItem>
+            <MenuItem Header="TEST DB – PERSONS"
+                      Style="{StaticResource Test_MenuItem_With_Dropdown}">
+                <MenuItem Header="INSERT"
+                          Height="35"
+                          Width="195"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="UPDATE"
+                          Height="35"
+                          Width="195"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="DELETE"
+                          Height="35"
+                          Width="195"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="DEMO DB – CUSTOMERS"
+                      Style="{StaticResource Demo_MenuItem_With_Dropdown}">
+                <MenuItem Header="INSERT"
+                          Height="35"
+                          Width="225"
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="InsertDemo_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="UPDATE"
+                          Height="35"
+                          Width="225"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="DELETE"
+                          Height="35"
+                          Width="225"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="SAMPLE DB – EMPLOYEES"
+                      Style="{StaticResource Sample_MenuItem_With_Dropdown}">
+                <MenuItem Header="INSERT"
+                          Height="35"
+                          Width="240"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="UPDATE"
+                          Height="35"
+                          Width="240"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="DELETE"
+                          Height="35"
+                          Width="240"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="DB OPS"
+                      Style="{StaticResource DB_Ops_MenuItem_With_Dropdown}">
+                <MenuItem Header="DUMP"
+                          Height="35"
+                          Width="100"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="STRIP"
+                          Height="35"
+                          Width="100"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="LOAD"
+                          Height="35"
+                          Width="100"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="BINLOG OPS"
+                      Style="{StaticResource Binlog_Ops_MenuItem_With_Dropdown}">
+                <MenuItem Header="DUMP"
+                          Height="35"
+                          Width="135"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="STRIP"
+                          Height="35"
+                          Width="135"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="LOAD"
+                          Height="35"
+                          Width="135"
+                          Style="{StaticResource Sub_MenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/mag.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Label Content="MYSQL TEST PERSONS" Margin="245,144,1073,630" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="1050,476,226,70" ItemsSource="{Binding}"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="245,170,1030,375" ItemsSource="{Binding}"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="240,475,1035,70" ItemsSource="{Binding}"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="512,170,763,375" ItemsSource="{Binding}"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="783,170,493,375" ItemsSource="{Binding}"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="512,476,763,70" ItemsSource="{Binding}"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="783,475,493,70" ItemsSource="{Binding}"/>
+        <Label Content="POSTGRES TEST PERSONS" Margin="240,449,1051,325" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+        <Label Content="MYSQL DEMO CUSTOMERS" Margin="512,144,817,630" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+        <Label Content="MYSQL SAMPLE EMPLOYEES" Margin="783,144,531,630" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+        <Label Content="DB NAMES" Margin="1050,144,371,630" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+        <Label Content="POSTGRES DEMO CUSTOMERS" Margin="512,449,791,325" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+        <Label Content="POSTGRES SAMPLE EMPLOYEES" Margin="783,449,509,325" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+        <Label Content="BINLOG IN USE" Margin="1050,450,339,324" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+    </Grid>
+</Window>

@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\dropdown.png" />
+    <None Remove="Assets\icontry.png" />
+    <None Remove="Assets\img_home.png" />
+    <None Remove="Assets\mag.png" />
+    <None Remove="Assets\magnifying-glass-solid.png" />
+    <None Remove="Fonts\GT-Alpina-Typewriter-Thin-Trial.otf" />
+    <None Remove="Fonts\GT-Alpina-Typewriter-Thin-Trial.ttf" />
+    <None Remove="Fonts\studio-pro-bold.ttf" />
+    <None Remove="Fonts\studio-pro-medium.ttf" />
+    <None Remove="Fonts\studio-pro-regular.ttf" />
+    <None Remove="Fonts\studio-pro-semi-bold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\GT-Alpina-Typewriter-Thin-Trial.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Fonts\GT-Alpina-Typewriter-Thin-Trial.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\studio-pro-bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\studio-pro-semi-bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\dropdown.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\mag.png" />
+    <Content Include="Fonts\studio-pro-medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\studio-pro-regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
