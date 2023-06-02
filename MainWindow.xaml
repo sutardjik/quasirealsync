@@ -24,7 +24,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -60,7 +60,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -125,7 +125,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -190,7 +190,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -255,7 +255,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -320,7 +320,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -389,15 +389,15 @@
                                                   Margin="8,0,0,0" />
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="/Fonts/#Studio Pro Semi Bold"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
                                                   Margin="35,0,0,0" />
                                 <Grid x:Name="Highlighter"
                                       Height="35"
-                                      Width="2"
-                                      Background="#FFFFFF"
+                                      Width="3"
+                                      Background="#FFEA00"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Center"
                                       Visibility="Collapsed" />
@@ -421,6 +421,49 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <ImageBrush x:Key="close_first"
+                    ImageSource="Assets/close.png"
+                    Stretch="None"/>
+        <ImageBrush x:Key="close_hover"
+                    ImageSource="Assets/closehover.png"
+                    Stretch="None"/>
+        <Style x:Key="CloseAppStyle"
+               TargetType="{x:Type Button}">
+            <Setter Property="Height"
+                    Value="40"/>
+            <Setter Property="Width"
+                    Value="40"/>
+            <Setter Property="HorizontalAlignment"
+                    Value="Right"/>
+            <Setter Property="VerticalAlignment"
+                    Value="Top"/>
+            <Setter Property="Margin"
+                   Value="0,20,20,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"
+                                BorderThickness="0"
+                                Background="{StaticResource close_first}"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="{StaticResource close_hover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="{StaticResource close_hover}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -435,8 +478,7 @@
                                   ShadowDepth="1"
                                   BlurRadius="35"/>
             </Border.Effect>
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="901,170,75,376"/>
-            
+            <ListBox x:Name="dblist" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="908,197,94,349" RenderTransformOrigin="0.344,0.488"/>
         </Border>
         <Border Height="40"
                 Width="1020"
@@ -444,45 +486,49 @@
                 BorderThickness="3"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Center"
-                Margin="0,75,0,0"
+                Margin="0,45,0,0"
                 CornerRadius="5"/>
         <Menu Height="30"
               Width="1010"
               Background="#363435"
               VerticalAlignment="Top"
               HorizontalAlignment="Center"
-              Margin="0,80,0,0">
+              Margin="0,50,0,0">
             <MenuItem Header="QUERY DBs"
                   Height="30"
                   Width="115"
-                  Style="{StaticResource Main_MenuItem}">
+                  Style="{StaticResource Main_MenuItem}"
+                  Click="QueryDB_Click">
             </MenuItem>
             <MenuItem Header="TEST DB – PERSONS"
                       Style="{StaticResource Test_MenuItem_With_Dropdown}">
                 <MenuItem Header="INSERT"
                           Height="35"
                           Width="195"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="InsertTest_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/insert.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="UPDATE"
                           Height="35"
                           Width="195"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="UpdateTest_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/update.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="DELETE"
                           Height="35"
                           Width="195"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="DeleteTest_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/delete.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
@@ -495,25 +541,27 @@
                           Style="{StaticResource Sub_MenuItem}"
                           Click="InsertDemo_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/insert.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="UPDATE"
                           Height="35"
                           Width="225"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="UpdateDemo_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/update.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="DELETE"
                           Height="35"
                           Width="225"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="DeleteDemo_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/delete.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
@@ -523,27 +571,30 @@
                 <MenuItem Header="INSERT"
                           Height="35"
                           Width="240"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="InsertSample_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/insert.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="UPDATE"
                           Height="35"
                           Width="240"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="UpdateSample_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/update.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="DELETE"
                           Height="35"
                           Width="240"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="DeleteSample_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/delete.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
@@ -553,27 +604,30 @@
                 <MenuItem Header="DUMP"
                           Height="35"
                           Width="100"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="dumpdb_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/dbdump.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="STRIP"
                           Height="35"
                           Width="100"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="stripdb_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/strip.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="LOAD"
                           Height="35"
                           Width="100"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="loaddb_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/load.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
@@ -583,47 +637,125 @@
                 <MenuItem Header="DUMP"
                           Height="35"
                           Width="135"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="dumpbinlog_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/binlogdump.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="STRIP"
                           Height="35"
                           Width="135"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="stripbinlog_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/strip.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="LOAD"
                           Height="35"
                           Width="135"
-                          Style="{StaticResource Sub_MenuItem}">
+                          Style="{StaticResource Sub_MenuItem}"
+                          Click="loadbinlog_Click">
                     <MenuItem.Icon>
-                        <Image Source="Assets/mag.png"
+                        <Image Source="Assets/load.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
         </Menu>
 
-        <Label Content="MYSQL TEST PERSONS" Margin="245,144,1073,630" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="1050,476,226,70" ItemsSource="{Binding}"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="245,170,1030,375" ItemsSource="{Binding}"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="240,475,1035,70" ItemsSource="{Binding}"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="512,170,763,375" ItemsSource="{Binding}"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="783,170,493,375" ItemsSource="{Binding}"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="512,476,763,70" ItemsSource="{Binding}"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="783,475,493,70" ItemsSource="{Binding}"/>
-        <Label Content="POSTGRES TEST PERSONS" Margin="240,449,1051,325" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
-        <Label Content="MYSQL DEMO CUSTOMERS" Margin="512,144,817,630" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
-        <Label Content="MYSQL SAMPLE EMPLOYEES" Margin="783,144,531,630" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
-        <Label Content="DB NAMES" Margin="1050,144,371,630" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
-        <Label Content="POSTGRES DEMO CUSTOMERS" Margin="512,449,791,325" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
-        <Label Content="POSTGRES SAMPLE EMPLOYEES" Margin="783,449,509,325" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
-        <Label Content="BINLOG IN USE" Margin="1050,450,339,324" FontFamily="Fonts/#Studio Pro Medium" Foreground="#D3D7DC"/>
+        <Label Content="MYSQL TEST PERSONS" Margin="126,318,1134,454" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <ListBox x:Name="binloginuse" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="1058,483,245,61" ItemsSource="{Binding}"/>
+        <DataGrid x:Name="testpersons" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="260,198,1016,347" ItemsSource="{Binding}"/>
+        <DataGrid x:Name="pgtestpersons" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="259,482,1016,63" ItemsSource="{Binding}"/>
+        <DataGrid x:Name="democustomers" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="530,199,744,347" ItemsSource="{Binding}"/>
+        <DataGrid x:Name="sampleemployees" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="798,198,478,347" ItemsSource="{Binding}"/>
+        <DataGrid x:Name="pgdemocustomers" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="530,483,745,63" ItemsSource="{Binding}"/>
+        <DataGrid x:Name="pgsampleemployees" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="798,483,478,62" ItemsSource="{Binding}"/>
+        <Label Content="PG TEST PERSONS" Margin="141,620,1150,154" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="MYSQL DEMO CUSTOMERS" Margin="412,334,878,440" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="MYSQL SAMPLE EMPLOYEES" Margin="671,326,603,448" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="DB NAMES" Margin="998,391,408,383" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="PG DEMO CUSTOMERS" Margin="398,604,864,170" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="PG SAMPLE EMPLOYEES" Margin="682,622,612,152" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="BINLOG IN USE" Margin="972,653,382,121" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button x:Name="Close_App"
+                Style="{StaticResource CloseAppStyle}" Margin="0,17,166,0"
+                Click="close_app_Click" RenderTransformOrigin="0.833,0.633"/>
     </Grid>
 </Window>

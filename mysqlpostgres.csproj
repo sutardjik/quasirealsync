@@ -8,46 +8,84 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\binlogdump.png" />
+    <None Remove="Assets\close.png" />
+    <None Remove="Assets\closehover.png" />
+    <None Remove="Assets\dbdump.png" />
+    <None Remove="Assets\delete.png" />
     <None Remove="Assets\dropdown.png" />
     <None Remove="Assets\icontry.png" />
     <None Remove="Assets\img_home.png" />
+    <None Remove="Assets\insert.png" />
+    <None Remove="Assets\load.png" />
     <None Remove="Assets\mag.png" />
     <None Remove="Assets\magnifying-glass-solid.png" />
-    <None Remove="Fonts\GT-Alpina-Typewriter-Thin-Trial.otf" />
-    <None Remove="Fonts\GT-Alpina-Typewriter-Thin-Trial.ttf" />
-    <None Remove="Fonts\studio-pro-bold.ttf" />
-    <None Remove="Fonts\studio-pro-medium.ttf" />
-    <None Remove="Fonts\studio-pro-regular.ttf" />
-    <None Remove="Fonts\studio-pro-semi-bold.ttf" />
+    <None Remove="Assets\strip.png" />
+    <None Remove="Assets\try.png" />
+    <None Remove="Assets\update.png" />
+    <None Remove="Fonts\Ogg-Roman.otf" />
+    <None Remove="Fonts\Roslindale-DisplayCondensedLightItalic-Testing.ttf" />
+    <None Remove="Fonts\UntitledSans-Regular.otf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\GT-Alpina-Typewriter-Thin-Trial.otf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Content Include="Fonts\GT-Alpina-Typewriter-Thin-Trial.ttf">
+    <Content Include="Fonts\Ogg-Roman.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Fonts\studio-pro-bold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Fonts\studio-pro-semi-bold.ttf">
+    <Content Include="Fonts\UntitledSans-Regular.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\binlogdump.png" />
+    <Resource Include="Assets\dbdump.png" />
+    <Resource Include="Assets\delete.png" />
     <Resource Include="Assets\dropdown.png" />
+    <Resource Include="Assets\insert.png" />
+    <Resource Include="Assets\closehover.png" />
+    <Resource Include="Assets\close.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\mag.png" />
-    <Content Include="Fonts\studio-pro-medium.ttf">
+    <Resource Include="Assets\strip.png" />
+    <Resource Include="Assets\load.png" />
+    <Resource Include="Assets\update.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.33" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
+    <PackageReference Include="MySqlConnector" Version="2.2.6" />
+    <PackageReference Include="Npgsql" Version="7.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="textfiles\binlogtext.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Fonts\studio-pro-regular.ttf">
+    </None>
+    <None Update="textfiles\dump.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
+    <None Update="textfiles\dumpinput.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="textfiles\dumptext.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="textfiles\strip_dump.sh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="textfiles\strip_transaction.sh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="textfiles\transaction.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="textfiles\transactioninput.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

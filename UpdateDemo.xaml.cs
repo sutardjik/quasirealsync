@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using System.Windows;
-using Npgsql;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Diagnostics;
@@ -11,22 +10,13 @@ using System.IO;
 namespace mysqlpostgres
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UpdateDemo.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UpdateDemo : Window
     {
-        public MainWindow()
+        public UpdateDemo()
         {
             InitializeComponent();
-            string connString = "server=localhost; uid=root; pwd=test123;database=test";
-            MySqlConnection conn = new MySqlConnection(connString);
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM persons", conn);
-            conn.Open();
-            DataTable dt = new DataTable();
-            dt.Load(cmd.ExecuteReader());
-            conn.Close();
-            testpersons.DataContext = dt;
-
             string connString1 = "server=localhost; uid=root; pwd=test123;database=demo";
             MySqlConnection conn1 = new MySqlConnection(connString1);
             MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM customers", conn1);
@@ -35,48 +25,12 @@ namespace mysqlpostgres
             dt0.Load(cmd1.ExecuteReader());
             conn1.Close();
             democustomers.DataContext = dt0;
-
-            string connString3 = "server=localhost; uid=root; pwd=test123;database=sample";
-            MySqlConnection conn3 = new MySqlConnection(connString3);
-            MySqlCommand cmd3 = new MySqlCommand("SELECT * FROM employees", conn3);
-            conn3.Open();
-            DataTable dt3 = new DataTable();
-            dt3.Load(cmd3.ExecuteReader());
-            conn3.Close();
-            sampleemployees.DataContext = dt3;
-
-            string connString0 = "Host=localhost;Username=postgres;Password=postgres;Database=test";
-            NpgsqlConnection conn0 = new NpgsqlConnection(connString0);
-            NpgsqlCommand cmd0 = new NpgsqlCommand("SELECT * FROM persons", conn0);
-            conn0.Open();
-            DataTable dt1 = new DataTable();
-            dt1.Load(cmd0.ExecuteReader());
-            conn0.Close();
-            pgtestpersons.DataContext = dt1;
-
-            string connString2 = "Host=localhost;Username=postgres;Password=postgres;Database=demo";
-            NpgsqlConnection conn2 = new NpgsqlConnection(connString2);
-            NpgsqlCommand cmd2 = new NpgsqlCommand("SELECT * FROM customers", conn2);
-            conn2.Open();
-            DataTable dt2 = new DataTable();
-            dt2.Load(cmd2.ExecuteReader());
-            conn0.Close();
-            pgdemocustomers.DataContext = dt2;
-
-            string connString4 = "Host=localhost;Username=postgres;Password=postgres;Database=sample";
-            NpgsqlConnection conn4 = new NpgsqlConnection(connString4);
-            NpgsqlCommand cmd4 = new NpgsqlCommand("SELECT * FROM employees", conn4);
-            conn4.Open();
-            DataTable dt4 = new DataTable();
-            dt4.Load(cmd4.ExecuteReader());
-            conn4.Close();
-            pgsampleemployees.DataContext = dt4;
         }
 
-        private void InsertDemo_Click(object sender, RoutedEventArgs e)
+        private void QueryDB_Click(object sender, RoutedEventArgs e)
         {
-            InsertDemo insertDemo = new InsertDemo();
-            insertDemo.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Hide();
         }
 
@@ -94,10 +48,10 @@ namespace mysqlpostgres
             this.Hide();
         }
 
-        private void UpdateDemo_Click(object sender, RoutedEventArgs e)
+        private void InsertDemo_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDemo updateDemo = new UpdateDemo();
-            updateDemo.Show();
+            InsertDemo insertDemo = new InsertDemo();
+            insertDemo.Show();
             this.Hide();
         }
 
@@ -136,16 +90,28 @@ namespace mysqlpostgres
             this.Hide();
         }
 
-        private void QueryDB_Click(object sender, RoutedEventArgs e)
+        private void submit_Click(object sender, RoutedEventArgs e)
         {
-            string connString = "server=localhost; uid=root; pwd=test123;database=test";
+            string connString = "server=localhost; uid=root; pwd=test123;database=demo";
             MySqlConnection conn = new MySqlConnection(connString);
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM persons", conn);
             conn.Open();
-            DataTable dt = new DataTable();
-            dt.Load(cmd.ExecuteReader());
-            conn.Close();
-            testpersons.DataContext = dt;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("UPDATE customers SET LastName='" + lastname.Text + "', FirstName='" + firstname.Text + "' WHERE CustomerID='" + customerid.Text + "'", conn);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Updated row in MySQL customers table.");
+                    conn.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update row in MySQL customers table.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             string connString1 = "server=localhost; uid=root; pwd=test123;database=demo";
             MySqlConnection conn1 = new MySqlConnection(connString1);
@@ -155,42 +121,6 @@ namespace mysqlpostgres
             dt0.Load(cmd1.ExecuteReader());
             conn1.Close();
             democustomers.DataContext = dt0;
-
-            string connString3 = "server=localhost; uid=root; pwd=test123;database=sample";
-            MySqlConnection conn3 = new MySqlConnection(connString3);
-            MySqlCommand cmd3 = new MySqlCommand("SELECT * FROM employees", conn3);
-            conn3.Open();
-            DataTable dt3 = new DataTable();
-            dt3.Load(cmd3.ExecuteReader());
-            conn3.Close();
-            sampleemployees.DataContext = dt3;
-
-            string connString0 = "Host=localhost;Username=postgres;Password=postgres;Database=test";
-            NpgsqlConnection conn0 = new NpgsqlConnection(connString0);
-            NpgsqlCommand cmd0 = new NpgsqlCommand("SELECT * FROM persons", conn0);
-            conn0.Open();
-            DataTable dt1 = new DataTable();
-            dt1.Load(cmd0.ExecuteReader());
-            conn0.Close();
-            pgtestpersons.DataContext = dt1;
-
-            string connString2 = "Host=localhost;Username=postgres;Password=postgres;Database=demo";
-            NpgsqlConnection conn2 = new NpgsqlConnection(connString2);
-            NpgsqlCommand cmd2 = new NpgsqlCommand("SELECT * FROM customers", conn2);
-            conn2.Open();
-            DataTable dt2 = new DataTable();
-            dt2.Load(cmd2.ExecuteReader());
-            conn0.Close();
-            pgdemocustomers.DataContext = dt2;
-
-            string connString4 = "Host=localhost;Username=postgres;Password=postgres;Database=sample";
-            NpgsqlConnection conn4 = new NpgsqlConnection(connString4);
-            NpgsqlCommand cmd4 = new NpgsqlCommand("SELECT * FROM employees", conn4);
-            conn4.Open();
-            DataTable dt4 = new DataTable();
-            dt4.Load(cmd4.ExecuteReader());
-            conn4.Close();
-            pgsampleemployees.DataContext = dt4;
         }
 
         private void dumpdb_Click(object sender, RoutedEventArgs e)
