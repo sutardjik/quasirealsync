@@ -33,3 +33,7 @@ QuasiRealSync is a data replication tool that enables quasi-real-time migration 
 	- Enable binary logging in `my.ini`
 		- Set `log-bin` parameter as `mysql-bin`
 - PostgreSQL 15
+	- Create a `.pgpass` file in the user's home directory to enable automatic authentication when connecting to PostgreSQL databases
+		- In Windows, the home directory is typically `C:\Users\<username>`
+			- Make sure to replace `<username>` with the actual username used on the system
+	- Add the following line to the `.pgpass` file: `localhost:5432:postgres:postgres:postgres`
