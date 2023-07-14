@@ -471,13 +471,6 @@
                 Width="1200"
                 CornerRadius="25"
                 Background="#524E4F">
-            <Border.Effect>
-                <DropShadowEffect Color="#000000"
-                                  Opacity="0.5"
-                                  Direction="90"
-                                  ShadowDepth="1"
-                                  BlurRadius="35"/>
-            </Border.Effect>
             <ListBox x:Name="dblist" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="840,225,204,400" RenderTransformOrigin="0.344,0.488"/>
         </Border>
         <Border Height="40"

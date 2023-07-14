@@ -27,7 +27,7 @@ QuasiRealSync is a replication tool that enables quasi-real-time data replicatio
 - MySQL script for databases, tables, values
 	- `mysqlschemas.sql`
 
-## Requirements
+## Prerequisites
 - Microsoft Visual Studio 2022 C# WPF (.NET 7.0)
 - MySQL Server 5.6
 	- Enable binary logging in `my.ini`
@@ -37,3 +37,5 @@ QuasiRealSync is a replication tool that enables quasi-real-time data replicatio
 		- In Windows, the home directory is typically `C:\Users\<username>`
 			- Make sure to replace `<username>` with the actual username used on the system
 	- Add the following line to the `.pgpass` file: `localhost:5432:postgres:postgres:postgres`
+- Windows CMD
+- Linux Shell
