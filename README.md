@@ -2,16 +2,8 @@
 
 QuasiRealSync is a replication tool that enables quasi-real-time data replication from MySQL to PostgreSQL. Developed as a Windows Presentation Foundation (WPF) .NET 7.0 Desktop Application, the tool captures and parses binary logs from MySQL, transferring them to the target PostgreSQL databases for replication. The tool leverages C# and XAML for the frontend, Shell commands for database and log stripping processes, and SQL CRUD commands for MySQL database operations.
 
-## Databases + Tables
-- `test` database
-	- `persons` table
-- `sample` database
-	- `employees` table
-- `demo` database
-	- `customers` table
-
-## Miscellaneous
-- Logs, output files, shell commands
+## Development Utilities + Resources
+- Logs, output files, Shell commands
 	- `textfiles` folder
 		- `binlogtext.txt`
 		- `dump.txt`
@@ -27,7 +19,8 @@ QuasiRealSync is a replication tool that enables quasi-real-time data replicatio
 - MySQL script for databases, tables, values
 	- `mysqlschemas.sql`
 
-## Prerequisites
+## Requirements
+- Clone this repository to local machine
 - Microsoft Visual Studio 2022 C# WPF (.NET 7.0)
 - MySQL Server 5.6
 	- Enable binary logging in `my.ini`
