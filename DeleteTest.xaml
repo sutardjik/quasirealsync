@@ -24,7 +24,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -60,7 +60,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -125,7 +125,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -190,7 +190,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -255,7 +255,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -320,7 +320,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -389,7 +389,7 @@
                                                   Margin="8,0,0,0" />
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -659,16 +659,16 @@
             </MenuItem>
         </Menu>
         <DataGrid x:Name="testpersons" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="704,225,572,163" ItemsSource="{Binding}"/>
-        <Label Content="MYSQL TEST PERSONS" Margin="704,195,572,575" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="MYSQL TEST PERSONS" Margin="704,195,572,575" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
         </Label>
         <ListBox x:Name="binloginuse" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="989,461,354,164" ItemsSource="{Binding}"/>
-        <Label Content="PersonID" Margin="353,325,984,434" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="25" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="PersonID" Margin="353,325,984,434" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="25" RenderTransformOrigin="0.5,0.5"/>
         <TextBox x:Name="personid"
                 FontSize="20"
-                FontFamily="Fonts/#Untitled Sans Regular"
-                Foreground="#D3D7DC"
-                CaretBrush="#D3D7DC"
-                BorderBrush="#D3D7DC"
+                FontFamily="Fonts/#Untitled Sans Light"
+                Foreground="#FFFFFF"
+                CaretBrush="#FFFFFF"
+                BorderBrush="#FFFFFF"
                 BorderThickness="0,0,0,1"
                 VerticalContentAlignment="Center"
                 Margin="353,366,881,400"
@@ -677,11 +677,11 @@
                 Height="70" 
                 Margin="336,446,0,0" 
                 VerticalAlignment="Top" 
-                FontFamily="Fonts/#Untitled Sans Regular"
+                FontFamily="Fonts/#Untitled Sans Light"
                 FontSize="20"
                 Width="300"
                 x:Name="btnMinimize"
-                Foreground="#D3D7DC"
+                Foreground="#FFFFFF"
                 BorderThickness="0"
                 Content="DELETE ROW"
                 RenderTransformOrigin="0.49,0.107"
@@ -704,8 +704,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="DB LIST" Margin="989,195,405,575" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5"/>
-        <Label Content="BINLOG IN USE" Margin="989,431,378,339" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="DB LIST" Margin="989,195,405,575" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="BINLOG IN USE" Margin="989,431,378,339" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5"/>
         <Button x:Name="Close_App"
                 Style="{StaticResource CloseAppStyle}" Margin="0,17,166,0"
                 Click="close_app_Click" RenderTransformOrigin="0.833,0.633"/>

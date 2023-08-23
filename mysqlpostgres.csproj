@@ -25,14 +25,14 @@
     <None Remove="Assets\update.png" />
     <None Remove="Fonts\Ogg-Roman.otf" />
     <None Remove="Fonts\Roslindale-DisplayCondensedLightItalic-Testing.ttf" />
-    <None Remove="Fonts\UntitledSans-Regular.otf" />
+    <None Remove="Fonts\UntitledSans-Light.otf" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Fonts\Ogg-Roman.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Fonts\UntitledSans-Regular.otf">
+    <Content Include="Fonts\UntitledSans-Light.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

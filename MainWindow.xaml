@@ -24,7 +24,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -60,7 +60,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -125,7 +125,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -190,7 +190,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -255,7 +255,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -320,7 +320,7 @@
                             <Grid>
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -389,7 +389,7 @@
                                                   Margin="8,0,0,0" />
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="#D3D7DC"
-                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Regular"
+                                                  TextBlock.FontFamily="Fonts/#Untitled Sans Light"
                                                   TextBlock.FontSize="15"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -660,7 +660,7 @@
             </MenuItem>
         </Menu>
 
-        <Label Content="MYSQL TEST PERSONS" Margin="126,318,1134,454" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="MYSQL TEST PERSONS" Margin="126,318,1134,454" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -677,7 +677,7 @@
         <DataGrid x:Name="sampleemployees" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="798,198,478,347" ItemsSource="{Binding}"/>
         <DataGrid x:Name="pgdemocustomers" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="530,483,745,63" ItemsSource="{Binding}"/>
         <DataGrid x:Name="pgsampleemployees" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="798,483,478,62" ItemsSource="{Binding}"/>
-        <Label Content="PG TEST PERSONS" Margin="141,620,1150,154" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="PG TEST PERSONS" Margin="141,620,1150,154" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -687,7 +687,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="MYSQL DEMO CUSTOMERS" Margin="412,334,878,440" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="MYSQL DEMO CUSTOMERS" Margin="412,334,878,440" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -697,7 +697,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="MYSQL SAMPLE EMPLOYEES" Margin="671,326,603,448" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="MYSQL SAMPLE EMPLOYEES" Margin="671,326,603,448" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -707,7 +707,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="DB NAMES" Margin="998,391,408,383" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="DB NAMES" Margin="998,391,408,383" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -717,7 +717,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="PG DEMO CUSTOMERS" Margin="398,604,864,170" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="PG DEMO CUSTOMERS" Margin="398,604,864,170" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -727,7 +727,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="PG SAMPLE EMPLOYEES" Margin="682,622,612,152" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="PG SAMPLE EMPLOYEES" Margin="682,622,612,152" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -737,7 +737,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="BINLOG IN USE" Margin="972,653,382,121" FontFamily="Fonts/#Ogg Roman" Foreground="#D3D7DC" FontSize="15" RenderTransformOrigin="0.5,0.5">
+        <Label Content="BINLOG IN USE" Margin="972,653,382,121" FontFamily="Fonts/#Ogg Roman" Foreground="#FFFFFF" FontSize="15" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
